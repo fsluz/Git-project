@@ -129,4 +129,49 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   initCarousel();
+  
+  // Inicializa busca na navbar
+  (function(){
+    const searchBtn = document.getElementById('nav-search');
+    const searchForm = document.getElementById('nav-search-form');
+    const searchInput = document.getElementById('nav-search-input');
+    if(!searchBtn || !searchForm) return;
+
+    function openSearch(){
+      searchForm.removeAttribute('hidden');
+      searchBtn.setAttribute('aria-expanded','true');
+      if(searchInput) searchInput.focus();
+    }
+    function closeSearch(){
+      searchForm.setAttribute('hidden','');
+      searchBtn.setAttribute('aria-expanded','false');
+      searchBtn.focus();
+    }
+
+    searchBtn.addEventListener('click', e=>{
+      e.preventDefault();
+      const opened = searchBtn.getAttribute('aria-expanded') === 'true';
+      if(opened) closeSearch(); else openSearch();
+    });
+
+    // fechar ao clicar fora
+    document.addEventListener('click', e=>{
+      if(!searchForm.contains(e.target) && e.target !== searchBtn){
+        closeSearch();
+      }
+    });
+
+    // fechar com ESC
+    document.addEventListener('keydown', e=>{
+      if(e.key === 'Escape') closeSearch();
+    });
+
+    // comportamento do submit (apenas demonstração)
+    searchForm.addEventListener('submit', e=>{
+      e.preventDefault();
+      const q = (searchInput && searchInput.value) ? searchInput.value.trim() : '';
+      if(q) alert('Pesquisar: ' + q);
+      closeSearch();
+    });
+  })();
 });

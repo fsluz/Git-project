@@ -3,7 +3,37 @@
 .header-inner{display:flex;align-items:center;gap:16px;padding:12px 0}
 .logo{margin:0;color:var(--accent)}
 .main-nav a{margin-right:12px;color:#333;text-decoration:none}
+.main-nav{display:flex;align-items:center;gap:12px}
 .cart{margin-left:auto}
+
+/* Botão de pesquisa dentro da nav */
+.nav-search{
+  background:#0b66ff;
+  color:#fff;
+  border:0;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.nav-search:focus{outline:3px solid rgba(11,102,255,0.18)}
+
+.nav-search-form{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  background:#fff;
+  padding:6px;
+  border-radius:6px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.nav-search-form[hidden]{display:none}
+.nav-search-form input[type="search"]{padding:6px 8px;border:1px solid #ddd;border-radius:4px}
+.nav-search-form button{padding:6px 8px;border-radius:4px;border:0;background:#0b66ff;color:#fff;cursor:pointer}
+
+@media (max-width:600px){
+  .nav-search{order:3;margin-left:auto}
+  .nav-search-form{position:absolute;right:12px;top:56px}
+}
 
 /* responsividade do header */
 @media (max-width:600px){
