@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loja Exemplo - Frontend</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <h1 class="logo">LojaEx</h1>
+        <nav class="main-nav">
+          <a href="#">Home</a>
+          <a href="#">Produtos</a>
+          <a href="#">Contato</a>
+        </nav>
+        <div class="cart">Carrinho (<span id="cart-count">0</span>)</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h2>Bem-vindo à LojaEx</h2>
+          <p>Trabalho de faculdade Frontend simples de e-commerce</p>
+        </div>
+      </section>
+
+      <section class="products container" id="products">
+        <!-- Produtos serão injetados por scripts -->
+        <!-- Layout de produtos (cards responsivos) -->
+        <!-- Estrutura alternativa para navegadores sem JS -->
+        <noscript>
+          <div class="card-grid">
+            <article class="card"><img src="https://picsum.photos/seed/p1/400/300" alt="Produto 1"><h3>Produto 1</h3><p class="price">R$ 0,00</p></article>
+            <article class="card"><img src="https://picsum.photos/seed/p2/400/300" alt="Produto 2"><h3>Produto 2</h3><p class="price">R$ 0,00</p></article>
+            <article class="card"><img src="https://picsum.photos/seed/p3/400/300" alt="Produto 3"><h3>Produto 3</h3><p class="price">R$ 0,00</p></article>
+          </div>
+        </noscript>
+        <!-- O conteúdo dinâmico é gerado por scripts/main.js -->
+      </section>
+
+    <footer class="site-footer">
+      <div class="container">© 2025
+  LojaEx. Todos os direitos reservados.
+      </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
+
