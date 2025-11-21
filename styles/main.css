@@ -2,3 +2,66 @@
 @import './components/layout.css';
 
 /* Arquivo principal de imports: organiza carregamento dos componentes CSS */
+
+/* Estilos do FAQ (botão + painel) */
+.faq-button{
+	position:fixed;
+	right:20px;
+	bottom:20px;
+	background:#0b66ff;
+	color:#fff;
+	border:none;
+	padding:14px 16px;
+	border-radius:28px;
+	font-weight:600;
+	box-shadow:0 6px 18px rgba(11,102,255,0.24);
+	cursor:pointer;
+	z-index:1000;
+}
+.faq-button:focus{outline:3px solid rgba(11,102,255,0.18)}
+
+.faq-overlay{
+	position:fixed;
+	inset:0;
+	display:none;
+	align-items:flex-end;
+	justify-content:flex-end;
+	background:rgba(0,0,0,0.12);
+	z-index:999;
+}
+
+.faq-overlay.open{display:flex}
+
+.faq-panel{
+	width:340px;
+	max-width:calc(100% - 40px);
+	max-height:70vh;
+	margin:0 20px 80px 0;
+	background:#fff;
+	border-radius:10px;
+	padding:16px 18px 20px 18px;
+	box-shadow:0 12px 40px rgba(0,0,0,0.15);
+	overflow:auto;
+}
+
+.faq-close{
+	position:absolute;
+	right:12px;
+	top:8px;
+	background:transparent;
+	border:none;
+	font-size:22px;
+	cursor:pointer;
+}
+
+.faq-panel h2{margin:6px 0 12px 0;font-size:18px}
+.faq-list{margin:0;padding-left:18px}
+.faq-list li{margin:10px 0}
+
+/* Evita scroll do body quando o painel estiver aberto */
+body.no-scroll{overflow:hidden}
+
+@media (max-width:480px){
+	.faq-panel{width:100%;margin:0;background:var(--bg, #fff);border-radius:12px 12px 0 0;max-height:80vh}
+	.faq-button{right:16px;bottom:16px;padding:12px 14px}
+}

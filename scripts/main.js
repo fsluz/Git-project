@@ -46,4 +46,38 @@ document.addEventListener('click',e=>{
 
 document.addEventListener('DOMContentLoaded',()=>{
   renderProducts();
+
+  // FAQ: abrir/fechar painel (inicializa após DOM pronto)
+  const btn = document.getElementById('faq-button');
+  const overlay = document.getElementById('faq-overlay');
+  const close = document.getElementById('faq-close');
+  if(!btn || !overlay) return;
+
+  function openFaq(){
+    overlay.classList.add('open');
+    overlay.removeAttribute('hidden');
+    document.body.classList.add('no-scroll');
+    const panel = document.getElementById('faq-panel');
+    if(panel) panel.focus();
+  }
+  function closeFaq(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('hidden','');
+    document.body.classList.remove('no-scroll');
+    btn.focus();
+  }
+
+  btn.addEventListener('click',openFaq);
+  if(close) close.addEventListener('click',closeFaq);
+
+  overlay.addEventListener('click',e=>{
+    if(e.target === overlay) closeFaq();
+  });
+
+  const panelEl = document.getElementById('faq-panel');
+  if(panelEl) panelEl.addEventListener('click', e=> e.stopPropagation());
+
+  document.addEventListener('keydown',e=>{
+    if(e.key === 'Escape' && !overlay.hidden) closeFaq();
+  });
 });
