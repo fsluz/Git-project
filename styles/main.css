@@ -1,0 +1,4 @@
+﻿@import './components/header.css';
+@import './components/layout.css';
+
+/* Arquivo principal de imports: organiza carregamento dos componentes CSS */
