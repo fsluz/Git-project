@@ -80,4 +80,53 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.addEventListener('keydown',e=>{
     if(e.key === 'Escape' && !overlay.hidden) closeFaq();
   });
+
+  // Carrossel: inicialização
+  function initCarousel(){
+    const track = document.getElementById('carousel-track');
+    if(!track) return;
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    const prev = document.getElementById('carousel-prev');
+    const next = document.getElementById('carousel-next');
+    const dotsContainer = document.getElementById('carousel-dots');
+    let index = 0;
+    // criar dots
+    slides.forEach((_,i)=>{
+      const b = document.createElement('button');
+      b.className='dot';
+      b.type='button';
+      b.setAttribute('aria-label',`Ir para slide ${i+1}`);
+      b.dataset.index = i;
+      b.addEventListener('click', ()=> goTo(i));
+      dotsContainer.appendChild(b);
+    });
+    const dots = Array.from(dotsContainer.children);
+
+    function update(){
+      track.style.transform = `translateX(-${index*100}%)`;
+      dots.forEach((d,i)=> d.classList.toggle('active', i===index));
+    }
+    function goTo(i){ index = (i + slides.length) % slides.length; update(); resetTimer(); }
+    function nextSlide(){ goTo(index+1); }
+    function prevSlide(){ goTo(index-1); }
+
+    if(next) next.addEventListener('click', ()=> nextSlide());
+    if(prev) prev.addEventListener('click', ()=> prevSlide());
+
+    let timer = setInterval(nextSlide, 5000);
+    function resetTimer(){ clearInterval(timer); timer = setInterval(nextSlide, 5000); }
+
+    const carouselEl = track.closest('.carousel');
+    if(carouselEl){
+      carouselEl.addEventListener('mouseenter', ()=> clearInterval(timer));
+      carouselEl.addEventListener('mouseleave', ()=> resetTimer());
+      carouselEl.addEventListener('focusin', ()=> clearInterval(timer));
+      carouselEl.addEventListener('focusout', ()=> resetTimer());
+    }
+
+    // inicial
+    update();
+  }
+
+  initCarousel();
 });
