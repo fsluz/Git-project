@@ -11,6 +11,6 @@ Integrante 3: Gabriel Ozório Franco
 
 Integrante 4: Jhonathan Lima
 
-Tecnologias Utilizadas: N/a
+Tecnologias Utilizadas: Javascript, HTML/CSS
 
 Tipo de Licença: Uso livre
