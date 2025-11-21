@@ -67,7 +67,7 @@
             </div>
 
             <div style="display:flex;gap:10px;align-items:center">
-              <a href="#" class="btn" id="add-to-cart">Adicionar ao carrinho</a>
+              <button id="add-to-cart" style="display:inline-block;padding:8px 12px;border-radius:6px;background:var(--accent);color:#fff;text-decoration:none;border:none;cursor:pointer">Adicionar ao carrinho</button>
               <a href="produtos.html" class="btn" style="background:#fff;color:var(--accent);border:1px solid var(--accent);">Continuar comprando</a>
             </div>
 
@@ -96,15 +96,9 @@
         add.addEventListener('click',e=>{
           e.preventDefault();
           const qty = parseInt(document.getElementById('qty').value,10)||1;
-          if(window.updateCart){ for(let i=0;i<qty;i++) window.updateCart(); return; }
-          // fallback: se main.js incrementa via listener em '.btn', criar um clique sintético
-          for(let i=0;i<qty;i++){
-            const synthetic = document.createElement('a');
-            synthetic.className = 'btn';
-            synthetic.style.display = 'none';
-            document.body.appendChild(synthetic);
-            synthetic.click();
-            document.body.removeChild(synthetic);
+          // Chamar updateCart a quantidade correta de vezes
+          if(window.updateCart){ 
+            for(let i=0;i<qty;i++) window.updateCart();
           }
         });
       });
