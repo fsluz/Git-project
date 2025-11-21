@@ -16,8 +16,12 @@ function renderProducts(){
   products.forEach(p=>{
     const card = document.createElement('article');
     card.className = 'card';
+    // envolver a imagem do primeiro produto em um link para a página do produto
+    const imgHtml = p.id === 1
+      ? `<a href="produto.html"><img src="${p.img}" alt="${p.name}" /></a>`
+      : `<img src="${p.img}" alt="${p.name}" />`;
     card.innerHTML = `
-      <img src="${p.img}" alt="${p.name}" />
+      ${imgHtml}
       <h3>${p.name}</h3>
       <p class="price">${formatPrice(p.price)}</p>
       <a class="btn" href="#" data-id="${p.id}">Adicionar</a>
