@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contato — LojaEx</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* HEADER */
+      .site-header {
+        background: #222;
+        padding: 15px 0;
+        color: white;
+      }
+
+      .header-inner {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .main-nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .main-nav a:hover {
+        color: #ffb400;
+      }
+
+      /* FORM CONTAINER */
+      .form-container {
+        max-width: 450px;
+        margin: 50px auto;
+        background: white;
+        padding: 25px 35px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      .form-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      /* FORM INPUTS */
+      .form-container p {
+        margin-bottom: 15px;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus {
+        border-color: #555;
+      }
+
+      /* BUTTONS */
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      input[type="submit"],
+      input[type="reset"] {
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 8px;
+      }
+
+      input[type="submit"] {
+        background: #28a745;
+        color: white;
+        font-weight: bold;
+      }
+
+      input[type="reset"] {
+        background: #dc3545;
+        color: white;
+        font-weight: bold;
+      }
+
+      input[type="submit"]:hover {
+        background: #218838;
+      }
+
+      input[type="reset"]:hover {
+        background: #c82333;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="logo">LojaEx</h1>
+        <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="produtos.html">Produtos</a>
+          <a href="contato.html">Contato</a>
+        </nav>
+        <div class="cart">Carrinho (<span id="cart-count">0</span>)</div>
+      </div>
+    </header>
+
+    <div class="form-container">
+      <h2>Fale Conosco</h2>
+
+      <p>
+        Nome:<br>
+        <input type="text" name="nome">
+      </p>
+
+      <p>
+        E-mail:<br>
+        <input type="email" name="replyton">
+      </p>
+
+      <p>
+        Comentários:<br>
+        <input type="text" name="comentarios">
+      </p>
+
+      <div class="btn-group">
+        <input type="submit" name="BTEnvia" value="Enviar">
+        <input type="reset" name="BTLimpa" value="Limpar">
+      </div>
+    </div>
+
+  </body>
+</html>
