@@ -13,7 +13,6 @@
         padding: 0;
       }
 
-      /* HEADER */
       .site-header {
         background: #222;
         padding: 15px 0;
@@ -39,7 +38,6 @@
         color: #ffb400;
       }
 
-      /* FORM CONTAINER */
       .form-container {
         max-width: 450px;
         margin: 50px auto;
@@ -54,13 +52,13 @@
         margin-bottom: 25px;
       }
 
-      /* FORM INPUTS */
-      .form-container p {
+      .form-field {
         margin-bottom: 15px;
       }
 
       input[type="text"],
-      input[type="email"] {
+      input[type="email"],
+      textarea {
         width: 100%;
         padding: 12px;
         border: 1px solid #ccc;
@@ -69,12 +67,11 @@
         outline: none;
       }
 
-      input[type="text"]:focus,
-      input[type="email"]:focus {
-        border-color: #555;
+      textarea {
+        height: 80px;
+        resize: vertical;
       }
 
-      /* BUTTONS */
       .btn-group {
         display: flex;
         justify-content: space-between;
@@ -101,13 +98,6 @@
         font-weight: bold;
       }
 
-      input[type="submit"]:hover {
-        background: #218838;
-      }
-
-      input[type="reset"]:hover {
-        background: #c82333;
-      }
     </style>
 
   </head>
@@ -129,26 +119,45 @@
     <div class="form-container">
       <h2>Fale Conosco</h2>
 
-      <p>
-        Nome:<br>
-        <input type="text" name="nome">
+      <p id="mensagem" style="color:green;font-weight:bold;display:none;">
+        Enviado com sucesso!
       </p>
 
-      <p>
-        E-mail:<br>
-        <input type="email" name="replyton">
-      </p>
+      <form action="" method="POST">
 
-      <p>
-        Comentários:<br>
-        <input type="text" name="comentarios">
-      </p>
+        <div class="form-field">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required />
+        </div>
 
-      <div class="btn-group">
-        <input type="submit" name="BTEnvia" value="Enviar">
-        <input type="reset" name="BTLimpa" value="Limpar">
-      </div>
+        <div class="form-field">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="replyto" required />
+        </div>
+
+        <div class="form-field">
+          <label for="comentarios">Comentários:</label>
+          <textarea id="comentarios" name="comentarios" required></textarea>
+        </div>
+
+        <div class="btn-group">
+          <input type="submit" value="Enviar" />
+          <input type="reset" value="Limpar" />
+        </div>
+
+      </form>
     </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const msg = document.getElementById("mensagem");
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault(); 
+        msg.style.display = "block"; 
+        form.reset(); 
+      });
+    </script>
 
   </body>
 </html>
